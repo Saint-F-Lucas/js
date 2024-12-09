@@ -73,4 +73,9 @@ function valueToPay(option, valor) {
     console.log('Pague  ' + valor * 1.1)
   }
 }
-valueToPay('mais que duas vezes', 100)
+// valueToPay('mais que duas vezes', 100)
+
+
+function main () {
+  console.log("Main function")
+}

@@ -37,6 +37,24 @@ What are they? Spaces in the RAM to store data,
 - `else if (condition) {code}` excutes the code when the condition is true, works if an `if` condition was false before,
 - `else {code}` executes if the conditions before are false,
 
+## functions
+
+It's a small part of the code to make a algorithm that can be called on demand
+To declare a function simply type `function name (parameters) {processing and output}`
+Parameters is data given to the function as it's called, and this data usually is used withing the functions processing,
+`return` is a parameter given inside the function to determine the value given uppon the use of the function.
+Important to notice that a function is a object just like any other integer or string daclered through a const or let.
+
+### função imediatamente invocada
+
+The exemple bellow is a function that would be executed just as it's processed, usually used for codes that are going to be used once,
+
+'''
+( function () {
+    console.log("")
+})()
+'''
+
 #### VS terminal
 
 - node -v: will give your js version,
