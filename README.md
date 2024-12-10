@@ -51,8 +51,25 @@ The exemple bellow is a function that would be executed just as it's processed, 
 
 '''
 ( function () {
-    console.log("")
+console.log("")
 })()
+'''
+
+## objects
+
+They work with keys and values,
+
+'''
+const object = {
+name: "Lucas"
+}
+
+object.age = 24
+
+delete object.name
+
+console.log(object.name)
+// would log {age: 24}
 '''
 
 #### VS terminal

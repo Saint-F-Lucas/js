@@ -62,20 +62,23 @@ function IMC(weight, height) {
 
 // IMC(118, 1.68)
 
+function desconto(valor, percentual) {
+  return valor * (1 - percentual / 100)
+}
+
 function valueToPay(option, valor) {
-  if (option === 'a vista debito') {
-    console.log('Pague  ' + valor * 0.9)
-  } else if (option === 'a vista dinheiro') {
-    console.log('Pague  ' + valor * 0.85)
-  } else if (option === 'duas vezes') {
+  if (option === 1) {
+    console.log('Pague  ' + desconto(valor, 10))
+  } else if (option === 2) {
+    console.log('Pague  ' + desconto(valor, 15))
+  } else if (option === 3) {
     console.log('Pague  ' + valor)
-  } else if (option === 'mais que duas vezes') {
-    console.log('Pague  ' + valor * 1.1)
+  } else if (option === 4) {
+    console.log('Pague  ' + desconto(valor, -10))
   }
 }
-// valueToPay('mais que duas vezes', 100)
-
-
-function main () {
-  console.log("Main function")
-}
+valueToPay(4, 100)
+;(function () {
+  console.log('my name is Lucas')
+}) //()
+// By uncommenting the "()" the file would just excute the function,
