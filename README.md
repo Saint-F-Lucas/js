@@ -57,7 +57,7 @@ console.log("")
 
 ## objects
 
-They work with keys and values,
+They work with keys and values, functions as valeus are called method, and since it's on the same object it can use other values from the object using `this.key`
 
 '''
 const object = {
@@ -72,7 +72,47 @@ console.log(object.name)
 // would log {age: 24}
 '''
 
+To call data inside the object you can either use `object.key` or `object[key]`
+
+### class
+
+There is a way to create modules for objects to improve the dinamic of the code, this is called creating a class, required and values and to be created automatically are given by the `constructor` atribute,
+
+'''
+
+class person {
+name
+age
+dateOfBirth
+constructor(name, age) {
+this.name = name
+this.age = age
+this.dateOfBirth = 2024 - this.age
+}
+describe() {
+console.log(
+`Hy ${this.name} welcome. Good to know that you are ${this.age}, you must have been born in ${this.dateOfBirth}`
+)
+}
+}
+'''
+
+## array
+
+Are lists of data, it's defined by square brackets and each item is separated with a comma,
+
+### methods
+
+- `.push('')`: add's data to the array, by default it's going to add to the and of the list.
+  > If you say a item of the list `array[0] = 'a'` you would replace the 0 item of the list.
+- `.pop()`: Takes the last item from the list and give't as a veriable, after the use the list no longer has that item,
+- `.shift()`: similar to `.pop()` but for the first item.
+
 #### VS terminal
 
 - node -v: will give your js version,
 - node file: runs your javascript file,
+
+#### dinamic string
+
+Simply use backtick '\`' insteads of quotes or double quotes and for dinamic values use `&{}`
