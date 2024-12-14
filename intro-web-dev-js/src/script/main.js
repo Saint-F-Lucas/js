@@ -44,21 +44,28 @@ function convertPokemonTohtml(pokemon) {
   `
 }
 
-pokeApi.getPokemons().then((pokemonList = []) => {
-  // better study this, but its getting the array from the getPokemons as usable data,
-  // Inside the map we gave a function that returns a list just like the for function bellow
-  let newPokemonList = pokemonList.map(pokemon => {
-    return convertPokemonTohtml(pokemon)
-  })
+pokeApi
+  .getPokemons()
+  .then(
+    (pokemonList = []) =>
+      (pokemonListhtlmElement.innerHTML = pokemonList
+        .map(convertPokemonTohtml)
+        .join(''))
+  )
 
-  newPokemonList = newPokemonList.join('')
-  pokemonListhtlmElement.innerHTML = newPokemonList
-
-  /*
+/*
+  1° version
   const pokemonhtmlList = []
   for (let index = 0; index < pokemonList.length; index++) {
     const pokemon = pokemonList[index]
     pokemonhtmlList.push(convertPokemonTohtml(pokemon, index + 1))
   }
+
+  2° version
+   better study this, but its getting the array from the getPokemons as usable data,
+   Inside the map we gave a function that returns a list just like the for function bellow
+   You can use a function and the map will iterate the list as a value for the function
+  let newPokemonList = pokemonList.map(pokemon => convertPokemonTohtml(pokemon))
+    newPokemonList = newPokemonList.join('')
+    pokemonListhtlmElement.innerHTML = newPokemonList
   */
-})
