@@ -108,6 +108,17 @@ Are lists of data, it's defined by square brackets and each item is separated wi
 - `.pop()`: Takes the last item from the list and give't as a veriable, after the use the list no longer has that item,
 - `.shift()`: similar to `.pop()` but for the first item.
 
+## HTTP request
+
+- A request is usualy done with a URL, a pages domain is the address of the data, and the rest of the text is the path were the data is stored.
+- There are many methods for a request such as | GET | POST | PUT | DELETE | usualy when you open a page you send a GET request
+- Query string is a GET request with a filter done by a text added after the path in the URL with a "?" to indicate it's start, the query is done by key and value for exemple 'https://www.youtube.com/watch?v=programing&genre=tutorial'
+  - This method also works for other parameters like '?offset=2&limit=2' this would show 2 items and they would be the third and fourth item in the list,
+- request headers: are parameters/configurations of the request such as, accept (you want to get from the request and accepts the listed items) or (accept-language: en,pt-BR;q=0.9,pt;q=0.8,en-GB;q=0.7,en-US;q=0.6,de;q=0.5) where the 'q=0.9' is the priority level.
+- reponse headers: just as the request but for what the server is sending to the user,
+- Status Code: is the result you got from the request.
+- request/response body is basicaly data.
+
 #### VS terminal
 
 - node -v: will give your js version,
