@@ -23,35 +23,84 @@ fetch(url)
 */
 // to avoid calling the inside then you can call after and the other and this will make the code cleaner
 
-const pokemonListhtlmElement = document.getElementById('pokemonList')
+/*
+function convertPokemonTypeTohtml(pokemonType) {
+  return pokemonType.map(
+    classType => `
+              <li class="type">${classType.type.name}</li>`
+  )
+}*/
 
+const pokemonListhtlmElement = document.getElementById('pokemonList')
+const loadMoreButton = document.getElementById('loadMoreButton')
+const maxRecord = 154 // 251
+let limit = 15
+let offset = 0
+
+/*
 function convertPokemonTohtml(pokemon) {
   return `
-          <li class="pokemon">
-          <span class="number">#001</span>
+          <li class="pokemon ${pokemon.firstType}">
+          <span class="number">${pokemon.pokemonNumber}</span>
           <span class="name">${pokemon.name}</span>
           <div class="detail">
             <ol class="types">
-              <li class="type">Grass</li>
-              <li class="type">Poison</li>
+              ${pokemon.types
+                .map(type => `<li class="type ${type}">${type}</li>`)
+                .join('')}
             </ol>
             <img
-              src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/dream-world/1.svg"
+              src="${pokemon.image}"
               alt="${pokemon.name}"
             />
           </div>
         </li>
   `
-}
+}*/
 
-pokeApi
-  .getPokemons()
-  .then(
+function loadPokemonItens(offset, limit) {
+  pokeApi.getPokemons(offset, limit).then(
     (pokemonList = []) =>
-      (pokemonListhtlmElement.innerHTML = pokemonList
-        .map(convertPokemonTohtml)
+      (pokemonListhtlmElement.innerHTML += pokemonList
+        .map(
+          pokemon => `
+          <li class="pokemon ${pokemon.firstType}">
+          <span class="number">${pokemon.pokemonNumber}</span>
+          <span class="name">${pokemon.name}</span>
+          <div class="detail">
+            <ol class="types">
+              ${pokemon.types
+                .map(type => `<li class="type ${type}">${type}</li>`)
+                .join('')}
+            </ol>
+            <img
+              src="${pokemon.image}"
+              alt="${pokemon.name}"
+            />
+          </div>
+        </li>
+  `
+        )
         .join(''))
   )
+}
+
+loadPokemonItens(offset, limit)
+
+loadMoreButton.addEventListener('click', () => {
+  offset += limit
+  const nextqnt = limit + offset
+  if (nextqnt >= maxRecord) {
+    debugger
+    const newLimit = maxRecord - offset
+    console.log(offset)
+    loadPokemonItens(offset, newLimit)
+    loadMoreButton.parentElement.removeChild(loadMoreButton)
+    return
+  } else {
+    loadPokemonItens(offset, limit)
+  }
+})
 
 /*
   1° version
